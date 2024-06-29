@@ -1,6 +1,7 @@
 import json
 import os
 from classes import *
+from tabulate import tabulate
 
 def print_menu():
     print("""
@@ -48,7 +49,7 @@ def eliminar_contacto(lista_contactos):
         contacto_eliminado = input("Ingresa el numero del usuario que deseas eliminar: ")
         if contacto_eliminado.isdigit():
             if int(contacto_eliminado) <= len(lista_contactos):
-                lista_contactos.pop((int(contacto_eliminado) - 1) )
+                lista_contactos.pop((int(contacto_eliminado)) )
                 print(f"\nSe ha eliminado el contacto")
                 input("Apreta Enter para continuar")
                 os.system("clear")
@@ -80,9 +81,13 @@ def mostrar_contactos(lista_contactos):
         count=1
         lista_json = [contacto.to_dict() for contacto in lista_contactos]
         print(" ")
+        lista_para_tabla = []
         for contacto in lista_json:
-            print(f"{count}- Nombre: {contacto['nombre']}\tTelefono:{contacto['telefono']}\tEmail:{contacto['email']}")
-            count+=1
+            lista_datos = []
+            for datos in contacto:
+                lista_datos.append(contacto[datos])
+            lista_para_tabla.append(lista_datos)
+        print(tabulate(lista_para_tabla, headers=["Nombre", "Telefono", "Email"], tablefmt="grid",showindex="always"))
     else:
         print("No hay contactos agregados")
 

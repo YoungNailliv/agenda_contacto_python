@@ -1,7 +1,12 @@
 [
     {
-        "nombre": "Kendrick Lamar",
-        "telefono": "18263732",
-        "email": "kdot@gmail.com"
+        "nombre": "Tupac",
+        "telefono": "1927424",
+        "email": "tupac@gmail.com"
+    },
+    {
+        "nombre": "Andre 300",
+        "telefono": "972398213",
+        "email": "andre@yahoo.com"
     }
 ]
